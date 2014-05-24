@@ -1,4 +1,4 @@
-<?php namespace Way\Generators\Filesystem;
+<?php namespace Haska\Generators\Filesystem;
 
 class Filesystem {
 
