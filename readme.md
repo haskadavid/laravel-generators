@@ -1,8 +1,22 @@
-# Fast Workflow in Laravel With Custom Generators
+Laravel generators package
+============
 
-[![Build Status](https://travis-ci.org/JeffreyWay/Laravel-4-Generators.png?branch=master)](https://travis-ci.org/JeffreyWay/Laravel-4-Generators)
+Informations
+---
 
-This Laravel 4 package provides a variety of generators to speed up your development process. These generators include:
+Provider:
+
+```php
+'Haska\Generators\GeneratorsServiceProvider',
+```
+
+Config and templates:
+
+```php
+php artisan generate:publish-templates
+```
+
+Commands:
 
 - `generate:model`
 - `generate:view`
@@ -13,33 +27,7 @@ This Laravel 4 package provides a variety of generators to speed up your develop
 - `generate:resource`
 - `generate:scaffold`
 
-## Installation
-
-> [Want a 5-minute video overview?](https://dl.dropboxusercontent.com/u/774859/Work/Laravel-4-Generators/Get-Started-With-Laravel-Custom-Generators.mp4)
-
-Begin by installing this package through Composer. Edit your project's `composer.json` file to require `way/generators`.
-
-	"require-dev": {
-		"way/generators": "2.*"
-	}
-
-> Please note that version 2 of this package removed support for a couple of generators, such as `generate:form`. If you'd like to continue using them, stick with version `1.1`.
-
-Next, update Composer from the Terminal:
-
-    composer update --dev
-
-Once this operation completes, the final step is to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.
-
-    'Way\Generators\GeneratorsServiceProvider'
-
-That's it! You're all set to go. Run the `artisan` command from the Terminal to see the new `generate` commands.
-
-    php artisan
-
 ## Usage
-
-Think of generators as an easy way to speed up your workflow. Rather than opening the models directory, creating a new file, saving it, and adding the class, you can simply run a single generate command.
 
 - [Migrations](#migrations)
 - [Models](#models)
@@ -48,7 +36,6 @@ Think of generators as an easy way to speed up your workflow. Rather than openin
 - [Pivot](#pivot)
 - [Resources](#resources)
 - [Scaffolding](#scaffolding)
-- [Configuration](#configuration)
 
 ### Migrations
 
@@ -509,71 +496,6 @@ class PostsController extends \BaseController {
 ```
 
 Please note that you're encouraged to modify this generated controller. It simply provides a starting point.
-
-### Configuration
-
-You may want to modify your templates - how the generated files are formatted. To allow for this, you
-need to publish the templates that, behind the scenes, the generators will reference.
-
-```bash
-php artisan generate:publish-templates
-```
-
-This will copy all templates to your `app/templates` directory. You can modify these however you wish to fit your desired formatting. If you'd prefer a different directory:
-
-```bash
-php artisan generate:publish-templates --path=app/foo/bar/templates
-```
-
-When you run the `generate:publish-templates` command, it will also publish
-the configuration to `app/config/packages/way/generators/config/config.php`. This file will look somewhat like:
-
-```php
-<?php
-
-return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Where the templates for the generators are stored...
-    |--------------------------------------------------------------------------
-    |
-    */
-    'model_template_path' => '/Users/jeffreyway/Desktop/generators-testing/app/templates/model.txt',
-
-    'scaffold_model_template_path' => '/Users/jeffreyway/Desktop/generators-testing/app/templates/scaffolding/model.txt',
-
-    'controller_template_path' => '/Users/jeffreyway/Desktop/generators-testing/app/templates/controller.txt',
-
-    'scaffold_controller_template_path' => '/Users/jeffreyway/Desktop/generators-testing/app/templates/scaffolding/controller.txt',
-
-    'migration_template_path' => '/Users/jeffreyway/Desktop/generators-testing/app/templates/migration.txt',
-
-    'seed_template_path' => '/Users/jeffreyway/Desktop/generators-testing/app/templates/seed.txt',
-
-    'view_template_path' => '/Users/jeffreyway/Desktop/generators-testing/app/templates/view.txt',
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Where the generated files will be saved...
-    |--------------------------------------------------------------------------
-    |
-    */
-    'model_target_path'   => app_path('models'),
-
-    'controller_target_path'   => app_path('controllers'),
-
-    'migration_target_path'   => app_path('database/migrations'),
-
-    'seed_target_path'   => app_path('database/seeds'),
-
-    'view_target_path'   => app_path('views')
-
-];
-```
-
-Also, while you're in this file, note that you can also update the default target directory for each generator.
 
 ### Shortcuts
 
