@@ -84,7 +84,7 @@ abstract class GeneratorCommand extends Command {
             return $path;
         }
 
-        return Config::get("generators::config.{$configName}");
+        return Config::get("laravel-generators::config.{$configName}");
     }
 
     /**
@@ -100,4 +100,4 @@ abstract class GeneratorCommand extends Command {
         ];
     }
 
-} 
+}
